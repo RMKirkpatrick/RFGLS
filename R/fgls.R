@@ -62,7 +62,7 @@ fgls <- function(
   #and the corresponding rows and columns of the cov matrix get trimmed out later.
   
   #RMK May'13--generic start values:
-  inivar <- summary(lm(Y~X,weights=weights))$sigma^2
+  inivar <- summary(lm(Y~X+0,weights=weights))$sigma^2
   if(med=="VC"){defaultstart <- c(0.3*inivar,0.3*inivar,0.4*inivar)}
   else{defaultstart <- c(rep(0.46,8),rep(inivar,4))}
   #Done creating these objects. ##########################################################

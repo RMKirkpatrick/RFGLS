@@ -75,7 +75,7 @@ gls.batch <-
   #Idiot check on phenotype file--is it sorted correctly?:
   if(input.mode==1){
     if( !(all(phen.dat[,c("FAMID","INDIV")]==phen.dat[order(phen.dat$FAMID, phen.dat$INDIV),c("FAMID","INDIV")])) ){
-      warning("Phenotype file not sorted by FAMID, and by INDIV within FAMID; doing sorting now.")
+      #warning("Phenotype file not sorted by FAMID, and by INDIV within FAMID; doing sorting now.")
       phen.dat <- phen.dat[order(phen.dat$FAMID, phen.dat$INDIV),]
   }}
   
@@ -212,7 +212,10 @@ gls.batch <-
   
   #create famsize column
   test.dat$famsize = 1
-  test.dat$famsize[test.dat$FTYPE!=6]=ave(test.dat$FAMID[test.dat$FTYPE!=6],test.dat$FAMID[test.dat$FTYPE!=6],FUN=length)
+  temp.vec <- as.character( test.dat$FAMID[ test.dat$FTYPE != 6 ] )
+  test.dat$famsize[ test.dat$FTYPE != 6 ] <- as.vector( table( temp.vec )[ temp.vec ] )
+  rm(temp.vec)
+
   #create unisid column, c-mz twin, b-bio-offspring, a-adopted offspring, f-father, m-mother
   test.dat$unisid=NULL
   test.dat$unisid[test.dat$INDIV==4 & test.dat$FTYPE!=6]="f"

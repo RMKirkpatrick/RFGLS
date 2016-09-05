@@ -42,7 +42,7 @@ gls.batch.get <-
   #Idiot check on phenotype file--is it sorted correctly?:
   if(input.mode==1){
     if( !(all(phen.dat[,c("FAMID","INDIV")]==phen.dat[order(phen.dat$FAMID, phen.dat$INDIV),c("FAMID","INDIV")])) ){
-      warning("Phenotype file not sorted by FAMID, and by INDIV within FAMID; doing sorting now.")
+      #warning("Phenotype file not sorted by FAMID, and by INDIV within FAMID; doing sorting now.")
       phen.dat <- phen.dat[order(phen.dat$FAMID, phen.dat$INDIV),]
     }}
   

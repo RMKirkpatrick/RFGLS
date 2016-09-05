@@ -24,8 +24,8 @@ A Rapid Generalized Least Squares Model for a Genome-Wide Quantitative Trait Ass
 \details{
 \tabular{ll}{
 Package: \tab RFGLS\cr
-Version: \tab 1.1\cr
-Date: \tab 2013/8/29\cr
+Version: \tab 1.1.1\cr
+Date: \tab 2015/2/2\cr
 Depends: \tab R (>= 2.15.0), stats, bdsmatrix, Matrix\cr
 License: \tab GPL (>= 2)\cr
 }}
